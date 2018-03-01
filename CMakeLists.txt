@@ -46,6 +46,8 @@ add_library(Graphics
         src/TextureArea.h
         src/Window.h)
 
+target_include_directories(Graphics PUBLIC ${CMAKE_SOURCE_DIR}/src)
+
 target_link_libraries(Graphics ${SDL2_LIBRARIES})
 target_link_libraries(Graphics ${SDL2_IMAGE_LIBRARY})
 target_link_libraries(Graphics ${SDL2_TTF_LIBRARY})
