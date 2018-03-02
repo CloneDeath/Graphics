@@ -54,6 +54,8 @@ set(sources
         src/Color.cpp
 )
 
+include_directories(include)
+
 add_library(Graphics
         ${sources}
         ${headers}
