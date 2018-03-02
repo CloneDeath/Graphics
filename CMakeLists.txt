@@ -3,6 +3,10 @@ project(Graphics)
 
 set(CMAKE_CXX_STANDARD 17)
 
+if(CMAKE_COMPILER_IS_GNUCXX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+endif(CMAKE_COMPILER_IS_GNUCXX)
+
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${Graphics_SOURCE_DIR}/cmake")
 
 find_package(SDL2 REQUIRED)
@@ -59,4 +63,9 @@ target_link_libraries(Graphics ${SDL2_LIBRARIES})
 target_link_libraries(Graphics ${SDL2_IMAGE_LIBRARY})
 target_link_libraries(Graphics ${SDL2_TTF_LIBRARY})
 
+install(TARGETS Graphics
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+)
 install(FILES ${headers} DESTINATION include/Graphics)
