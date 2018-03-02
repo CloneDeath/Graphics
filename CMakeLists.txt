@@ -71,3 +71,12 @@ install(TARGETS Graphics
         ARCHIVE DESTINATION lib
 )
 install(FILES ${headers} DESTINATION include/Graphics)
+
+macro(Graphics_POSTBUILD_COPY target_)
+    add_custom_command(
+            TARGET ${target_} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:Graphics>
+            $<TARGET_FILE_DIR:${target_}>/$<TARGET_FILE_NAME:Graphics>
+    )
+endmacro(Graphics_POSTBUILD_COPY)
